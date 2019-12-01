@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "346723081362",
+    "firebase_url": "https://final-individual-gary-second.firebaseio.com",
+    "project_id": "final-individual-gary-second",
+    "storage_bucket": "final-individual-gary-second.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:346723081362:android:4eb5f059e47c7f35c25a4b",
+        "android_client_info": {
+          "package_name": "com.example.finalindividualgary_second"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "346723081362-6evra1ljtnprqplabrn0gp2tkgq7b3hi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqImtfa0FumDnXBn3qFDsGCK_6Qql_R5Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "346723081362-6evra1ljtnprqplabrn0gp2tkgq7b3hi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
