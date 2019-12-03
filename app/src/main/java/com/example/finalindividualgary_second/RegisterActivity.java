@@ -22,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
     Button buttonReport;
-    EditText editTextBird,editTextYourMail,editTextZip,editTextImportance;
+    EditText editTextBird,editTextYourMail,editTextZip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         editTextBird = findViewById(R.id.editTextBird );
         editTextYourMail = findViewById( R.id.editTextYourMail );
         editTextZip = findViewById(R.id.editTextZip );
-        editTextImportance = findViewById( R.id.editTextImportance );
+
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -65,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             String createBird = editTextBird.getText().toString();
             String createMail = editTextYourMail.getText().toString();
             String createZip = editTextZip.getText().toString();
-            String createImportance = editTextImportance.getText().toString();
+            Integer createImportance = 0;
 
             Bird createBirds = new Bird(createBird,createMail,createZip,createImportance);
 

@@ -58,7 +58,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View view) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("mybirds");
+        final DatabaseReference myRef = database.getReference("mybirds");
 
         if (view == buttonSearch) {
 
@@ -68,15 +68,15 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                    // String findKey = dataSnapshot.getKey();
+                    String findKey = dataSnapshot.getKey();
                     Bird foundBird = dataSnapshot.getValue(Bird.class);
                     String findBird = foundBird.bird;
                     String findYourMail = foundBird.mail;
-                    String findImportance = foundBird.importance;
+                    Integer findImportance = foundBird.importance;
 
                     textViewBird.setText(findBird);
                     textViewYourMail.setText(findYourMail);
-                    textViewImportance.setText(findImportance);
+                    textViewImportance.setText(String.valueOf( findImportance ));
                 }
 
                 @Override
@@ -99,17 +99,49 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
                 }
             });
+        }else if(view == buttonAdd){
+
+            String addbird = editTextZipSearch.getText().toString();
+
+            myRef.orderByChild("zip").equalTo(addbird).addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    String findKey = dataSnapshot.getKey();
+                    Bird foundBird = dataSnapshot.getValue(Bird.class);
+                    Integer findImportanceadd = foundBird.importance + 1;
+
+                    textViewImportance.setText(String.valueOf( findImportanceadd ));
+
+                    myRef.child(findKey).child("importance").setValue(findImportanceadd);
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
         }
-
-
-
 
          if (editTextZipSearch.getText().toString().trim().equalsIgnoreCase("")) {
             editTextZipSearch.setError("This field can not be blank");
         }
-
-
-
 
     }
 

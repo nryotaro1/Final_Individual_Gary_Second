@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String email = editTextEmail.getText().toString();
         String password = editTextPassword.getText().toString();
 
+
         if (view == buttonRegister) {
             // What to do to register folks
             mAuth.createUserWithEmailAndPassword( email, password )
