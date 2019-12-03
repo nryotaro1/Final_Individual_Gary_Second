@@ -111,7 +111,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                     Bird foundBird = dataSnapshot.getValue(Bird.class);
                     Integer findImportance1 = foundBird.importance + 1;
 
-                    textViewImportance.setText(String.valueOf(findImportance1 ));
+                    textViewImportance.setText(String.valueOf(findImportance1));
 
                     myRef.child(findKey).child("importance").setValue(findImportance1);
                 }

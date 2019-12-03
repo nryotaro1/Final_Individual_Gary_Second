@@ -10,7 +10,7 @@ public class Bird {
     public Bird() {
     }
 
-    public Bird(String bird,String mail, String zip,Integer importance) {
+    public Bird(String bird,String mail, String zip, Integer importance) {
 
         this.bird = bird;
         this.mail = mail;

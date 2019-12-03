@@ -36,7 +36,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         editTextYourMail = findViewById( R.id.editTextYourMail );
         editTextZip = findViewById(R.id.editTextZip );
 
-
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
               String email = user.getEmail();
@@ -48,17 +47,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
-
-
-
-
     @Override
     public void onClick(View view) {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("mybirds");
-
-
 
         if (view == buttonReport) {
 
