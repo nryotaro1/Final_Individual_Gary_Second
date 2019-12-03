@@ -28,7 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class SearchActivity extends AppCompatActivity implements View.OnClickListener{
 
     Button buttonSearch,buttonAdd;
-    EditText editTextZipSearch,editTextAdd;
+    EditText editTextZipSearch;
     TextView textViewBird,textViewYourMail,textViewImportance;
 
     EditText editTextYourMail;
@@ -45,7 +45,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         buttonAdd.setOnClickListener(this);
 
         editTextZipSearch = findViewById(R.id.editTextZipSearch);
-        editTextAdd = findViewById( R.id.editTextAdd );
+
 
         editTextYourMail = findViewById( R.id.editTextYourMail );
 
@@ -67,8 +67,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             myRef.orderByChild("zip").equalTo(findZip).addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                    String findKey = dataSnapshot.getKey();
+                    //String findKey = dataSnapshot.getKey();
                     Bird foundBird = dataSnapshot.getValue(Bird.class);
                     String findBird = foundBird.bird;
                     String findYourMail = foundBird.mail;
@@ -76,7 +75,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
                     textViewBird.setText(findBird);
                     textViewYourMail.setText(findYourMail);
-                    textViewImportance.setText(String.valueOf( findImportance ));
+                    textViewImportance.setText(String.valueOf(findImportance));
                 }
 
                 @Override
@@ -99,6 +98,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
                 }
             });
+
         }else if(view == buttonAdd){
 
             String addbird = editTextZipSearch.getText().toString();
@@ -109,11 +109,11 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
                     String findKey = dataSnapshot.getKey();
                     Bird foundBird = dataSnapshot.getValue(Bird.class);
-                    Integer findImportanceadd = foundBird.importance + 1;
+                    Integer findImportance1 = foundBird.importance + 1;
 
-                    textViewImportance.setText(String.valueOf( findImportanceadd ));
+                    textViewImportance.setText(String.valueOf(findImportance1 ));
 
-                    myRef.child(findKey).child("importance").setValue(findImportanceadd);
+                    myRef.child(findKey).child("importance").setValue(findImportance1);
                 }
 
                 @Override
