@@ -101,12 +101,10 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             });
         }
 
-        if (buttonAdd == view){
 
 
-        }
 
-        if (editTextZipSearch.getText().toString().trim().equalsIgnoreCase("")) {
+         if (editTextZipSearch.getText().toString().trim().equalsIgnoreCase("")) {
             editTextZipSearch.setError("This field can not be blank");
         }
 
@@ -114,6 +112,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
 
     }
+
+
 
 
 
@@ -138,12 +138,11 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
         } else if(item.getItemId() == R.id.itemLogout){
             Intent logoutIntent = new Intent(this,MainActivity.class);
-            FirebaseAuth.getInstance().signInAnonymously();
             logoutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(logoutIntent);
-            editTextYourMail.setText("");
+            FirebaseAuth.getInstance().signInAnonymously();
             finish();
-
+            //editTextYourMail.setText("");
         }
         return super.onOptionsItemSelected(item);
     }

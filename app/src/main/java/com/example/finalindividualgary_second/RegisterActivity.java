@@ -91,15 +91,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.mainmenu,menu);
-
         return super.onCreateOptionsMenu(menu);
+
     }
-
-
-
-
-
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -116,6 +110,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             logoutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK);
             editTextYourMail.setText("");
             startActivity(logoutIntent);
+            FirebaseAuth.getInstance().signInAnonymously();
+            finish();
+
         }
 
         return super.onOptionsItemSelected(item);
