@@ -44,6 +44,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         buttonAdd = findViewById(R.id.buttonAdd);
         buttonAdd.setOnClickListener(this);
 
+
+
         editTextZipSearch = findViewById(R.id.editTextZipSearch);
 
 
@@ -99,7 +101,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 }
             });
 
-        }else if(view == buttonAdd){
+        } else if(view == buttonAdd){
 
             String addbird = editTextZipSearch.getText().toString();
 
@@ -114,6 +116,9 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                     textViewImportance.setText(String.valueOf(findImportance1));
 
                     myRef.child(findKey).child("importance").setValue(findImportance1);
+
+
+
                 }
 
                 @Override
@@ -134,13 +139,16 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
 
+
                 }
             });
 
         }
 
+
+///showing the error menu when zip code is blank
          if (editTextZipSearch.getText().toString().trim().equalsIgnoreCase("")) {
-            editTextZipSearch.setError("This field can not be blank");
+            editTextZipSearch.setError("Zip code is empty");
         }
 
     }
@@ -175,7 +183,14 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             FirebaseAuth.getInstance().signInAnonymously();
             finish();
             //editTextYourMail.setText("");
+
+            //adding menu to move to landing page
+        }else if(item.getItemId() == R.id.itemLanding) {
+            Intent landingIntent = new Intent( this, LandingActivity.class );
+            landingIntent.setFlags( Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK );
+            startActivity( landingIntent );
         }
+
         return super.onOptionsItemSelected(item);
     }
 

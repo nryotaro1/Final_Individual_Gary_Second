@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 Toast.makeText( MainActivity.this, "Login Successful", Toast.LENGTH_SHORT ).show();
 
                                 /////
-                                Intent loginintent = new Intent(MainActivity.this,RegisterActivity.class);
+                                Intent loginintent = new Intent(MainActivity.this,LandingActivity.class);
                                 startActivity( loginintent );
 
                             } else {

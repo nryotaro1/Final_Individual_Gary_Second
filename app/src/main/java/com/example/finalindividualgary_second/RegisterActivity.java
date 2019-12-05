@@ -97,8 +97,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }else if(item.getItemId() == R.id.itemSearch){
             Intent searchIntent = new Intent(this,SearchActivity.class);
             startActivity(searchIntent);
-
-        }else if(item.getItemId() == R.id.itemLogout){
+            //adding menu to move to landing page
+        }else if(item.getItemId() == R.id.itemLanding) {
+            Intent landingIntent = new Intent( this, LandingActivity.class );
+            landingIntent.setFlags( Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK );
+            startActivity( landingIntent );
+        }
+        else if(item.getItemId() == R.id.itemLogout){
             Intent logoutIntent = new Intent(this,MainActivity.class);
             logoutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK);
             editTextYourMail.setText("");
@@ -108,7 +113,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         }
 
-        return super.onOptionsItemSelected(item);
+            return super.onOptionsItemSelected(item);
     }
 
 }
